@@ -1,0 +1,58 @@
+package products;
+import java.util.Scanner;
+public class Products {
+
+    public static void main(String[] args) {
+         Scanner read=new Scanner(System.in);
+        String n,d,b,answer;
+        String [] Name=new String[100];
+        int [] Payment=new int[100];
+        int [] Quantity= new int[100];
+        int p,q,i,Total,k,w,Money;
+        i=1;
+        Total=0;
+        answer="Continue";
+        System.out.println ("Ποια είναι η διεύθυνση που θες να σου στείλουμε τα προιόντα?");
+        d=read.nextLine();
+        System.out.println("Σε ποια διεύθυνση να στείλουμε τον λογαριασμό?");
+        b=read.nextLine();
+        while (answer.equals("Continue")){
+        System.out.println("Πως λενε το προιόν που θελετε?");
+        n=read.nextLine();
+        System.out.println("Πόσο κοστίζει το προιόν?");
+        p=read.nextInt();
+        System.out.println("Πόσες μονάδες του προιόντος θελετε?");
+        q=read.nextInt();
+        Payment[i]=p*q;
+        Quantity[i]=q;
+        Name[i]=n;
+        System.out.println("Αν τελείωσατε με τις αγορές σας γράψτε 'Stop' αλλιώς γράψτε 'Continue'");
+        answer=read.nextLine();
+        i=i+1;
+        }
+        i=i-1;
+        for (k=1;k<i;k++) {
+            Total=Total + Payment[k];
+        }
+        System.out.println("Πόσα χρήνατα μπορείτε να δώσετε?");
+        w=read.nextInt();
+        Money=Total-w;
+        Billing(b,i,Quantity,Name,Money,w);
+        Shipping(d);
+    
+}
+    public static void Billing(String b,int i, int Quantity[],String Name[], int Money, int w){
+        int k;
+        System.out.println("Διεύθυνση:"+" " + b);
+        System.out.println("Παραγγείλατε:");
+        for (k=1;k<i;k++) {
+            System.out.println(Quantity[k]+" "+ "Μονάδες" + Name[k]);
+        }
+        System.out.println ("Έχετε πληρώσει:" + " " + w);
+        System.out.println ("Χρωστάτε:" + " "+ Money);
+    }
+    public static void Shipping(String d) {
+        System.out.println("Διεύθυνση:" + " "+ d);
+        System.out.println("Τα προιόντα σας στάλθηκαν επιτυχώς");
+    }
+}
