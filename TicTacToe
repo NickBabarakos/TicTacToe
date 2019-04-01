@@ -1,0 +1,114 @@
+//Στο πρόγραμμα οι 2 παίκτες βάζουν 1 και 2 στις θέσεις του πινακα
+// Ο πίνακας έχει 9 , θέσεις (3 πάνω, 3 στο κέντρο και 3 κάτω)
+//Ο κάθε παίκτης πρέπει να γράφει σε πια θέση θέλει να βάλει το νούμερο του
+//Ο πάικτης που θα καταφέρει να βάλει 3 σερί νούμερα καθετα, οριζόντια η διαγώνια νικάει
+package ticktactoe;
+
+import java.util.Scanner;
+
+public class Ticktactoe {
+
+    public static void main(String[] args) {
+        int[] tictactoe = new int[10];
+        int n, p, v, i;
+        p = 0;
+        v = 0;
+        n = 0;
+        String a, b, c, d, game, e, f;
+        Scanner read = new Scanner(System.in);
+        for (i = 1; i < 8; i++) {
+            tictactoe[i] = 0;
+        }
+        a = "Ο παίκτης Α βάζει 1 και ο παίκτης 2 βάζει 2";
+        b = "Ο κάθε παίκτης μπορεί να βάζει νούμερα στις θέσεις 1-9. Ισχύουν οι γνωστοί κανόνες της τρίλιζας";
+        c = "Σειρά του παίκτη 1,διάλεξε θέση";
+        d = "σειρά του παίκτη 2,διάλεξε θέση";
+        e = "Ο παίκτης 1 νίκησε";
+        f = "O παίκτης 2 νίκησε";
+        game = "Not over";
+        while (game == "Not over") {
+            while (tictactoe[n] == 0 || tictactoe[n] == 2) {
+                System.out.println(c);
+                n = read.nextInt();
+                if (tictactoe[n] == 0) {
+                    tictactoe[n] = 1;
+                    if (n == 1) {
+                        p += 101;
+                    } else if (n == 2) {
+                        p = p + 431;
+                    } else if (n == 3) {
+                        p = p + 762;
+                    } else if (n == 4) {
+                        p = p + 303;
+                    } else if (n == 5) {
+                        p = p + 634;
+                    } else if (n == 6) {
+                        p = p + 908;
+                    } else if (n == 7) {
+                        p = p + 777;
+                    } else if (n == 8) {
+                        p = p + 621;
+                    } else if (n == 9) {
+                        p = p + 429;
+                    }
+
+                }
+            }
+            if (p == 1294 || p == 1845 || p == 1827) {
+                game = "over";
+                System.out.print(e);
+            } else if (p == 1181 || p == 1686 || p == 2099) {
+                game = "Over";
+                System.out.print(e);
+            } else if (p == 1164 || p == 2173) {
+                game = "Over";
+                System.out.print(e);
+            } else {
+                game = "Not over";
+
+System.out.println ("\n" + tictactoe[1] + tictactoe[2] + tictactoe[3] + "\n" + tictactoe[4] + tictactoe[5]+ tictactoe [6]+"\n"+tictactoe[7]+tictactoe[8]+tictactoe[9]);
+                if (game.equals("Not over")) {
+                    while (tictactoe[n] == 0 || tictactoe[n] == 1) {
+                        System.out.println(d);
+                        n = read.nextInt();
+                        if (tictactoe[n] == 0) {
+                            tictactoe[n] = 2;
+                        }
+                        if (n == 1) {
+                            v = v + 101;
+                        } else if (n == 2) {
+                            v = v + 431;
+                        } else if (n == 3) {
+                            v = v + 762;
+                        } else if (n == 4) {
+                            v = v + 303;
+                        } else if (n == 5) {
+                            v = v + 634;
+                        } else if (n == 6) {
+                            v = v + 908;
+                        } else if (n == 7) {
+                            v = v + 777;
+                        } else if (n == 8) {
+                            v = v + 621;
+                        } else if (n == 9) {
+                            v = v + 429;
+                        }
+                    }
+                    if (v == 1294 || v == 1845 || v == 1827) {
+                        game = "Over";
+                        System.out.print(f);
+                    } else if (v == 1181 || v == 1686 || v == 2099) {
+                        game = "Over";
+                        System.out.print(f);
+                    } else if (v == 1164 || v == 2173) {
+                        game = "over";
+                        System.out.print(f);
+                    } else {
+                        game = "Not over";
+                    }
+                    System.out.println ("\n" + tictactoe[1] + tictactoe[2] + tictactoe[3] + "\n" + tictactoe[4] + tictactoe[5]+ tictactoe [6]+"\n"+tictactoe[7]+tictactoe[8]+tictactoe[9]);
+                }
+            }
+        }
+    }
+}
